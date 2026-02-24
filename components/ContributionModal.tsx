@@ -63,7 +63,9 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
       setSuccess(true);
     } catch (err) {
       setSubmitError(
-        err instanceof Error ? err.message : "Error al enviar. Intenta de nuevo."
+        err instanceof Error
+          ? err.message
+          : "Error al enviar. Intenta de nuevo.",
       );
     } finally {
       setSubmitting(false);
@@ -79,10 +81,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
-        <div
-          className="absolute inset-0 bg-wedding-deep/50"
-          aria-hidden
-        />
+        <div className="absolute inset-0 bg-wedding-deep/50" aria-hidden />
         <motion.div
           className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-wedding-cream rounded-2xl shadow-xl"
           initial={{ scale: 0.95, opacity: 0 }}
@@ -129,10 +128,10 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                 </p>
                 <ul className="bg-wedding-beige/50 rounded-xl p-4 mb-6 space-y-3 font-body text-wedding-deep text-sm">
                   <li>
-                    <strong>Yape Sofía:</strong> 955170938
+                    <strong>Yape/Plin Sofía:</strong> 955170938
                   </li>
                   <li>
-                    <strong>Yape Luis:</strong> 957329602
+                    <strong>Yape/Plin Luis:</strong> 957329602
                   </li>
                   <li>
                     <strong>Interbank Soles:</strong>
@@ -150,10 +149,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                   </li>
                 </ul>
 
-                <form
-                  onSubmit={handleSubmit(onSubmit)}
-                  className="space-y-4"
-                >
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div>
                     <label
                       htmlFor="name"
@@ -214,7 +210,9 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                       <option value="Yape Sofía">Yape Sofía</option>
                       <option value="Yape Luis">Yape Luis</option>
                       <option value="Interbank Soles">Interbank Soles</option>
-                      <option value="Interbank dólares">Interbank dólares</option>
+                      <option value="Interbank dólares">
+                        Interbank dólares
+                      </option>
                     </select>
                     {errors.paymentMethod && (
                       <p className="mt-1 text-sm text-red-600">
