@@ -137,7 +137,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                   <li>
                     <strong>Interbank Soles:</strong>
                     <br />
-                    N° de cuenta: 98742983740347
+                    N° de cuenta: 8983271089114
                     <br />
                     CCI: 00389801327108911445
                   </li>
