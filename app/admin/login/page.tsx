@@ -47,9 +47,7 @@ export default function AdminLoginPage() {
       await signIn(data.email, data.password);
       router.replace("/admin");
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Error al iniciar sesión"
-      );
+      setError(err instanceof Error ? err.message : "Error al iniciar sesión");
     }
   }
 
@@ -62,7 +60,7 @@ export default function AdminLoginPage() {
         transition={{ duration: 0.3 }}
       >
         <h1 className="font-display text-2xl text-disco-deep text-center mb-6">
-          Admin – Boda
+          Admin
         </h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -80,7 +78,9 @@ export default function AdminLoginPage() {
               autoComplete="email"
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              <p className="mt-1 text-sm text-red-600">
+                {errors.email.message}
+              </p>
             )}
           </div>
           <div>
@@ -103,9 +103,7 @@ export default function AdminLoginPage() {
               </p>
             )}
           </div>
-          {error && (
-            <p className="text-sm text-red-600 text-center">{error}</p>
-          )}
+          {error && <p className="text-sm text-red-600 text-center">{error}</p>}
           <button
             type="submit"
             className="w-full rounded-xl bg-disco-deep text-disco-cream font-body font-medium py-3 hover:bg-disco-soft transition-colors"

@@ -19,8 +19,9 @@ export function ExplanatorySection() {
       <Sparkles className="absolute top-4 right-4 w-12 h-12 opacity-50 scale-x-[-1]" />
       <div className="relative max-w-2xl mx-auto text-center">
         <p className="font-body text-disco-silver text-lg sm:text-xl leading-relaxed">
-          Para mi cumpleaños preparé una lista de cosas que me encantaría recibir.
-          Si quieres regalarme algo, puedes hacer tu aporte aquí ✨
+          Para mi cumpleaños preparé una lista de cosas que me encantaría
+          recibir. Si quieres regalarme algo, las opciones perfectas están aquí
+          ✨
         </p>
       </div>
     </motion.section>
