@@ -30,8 +30,8 @@ export default function AdminLoginPage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-wedding-cream">
-        <p className="font-body text-wedding-gray">Cargando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-disco-cream">
+        <p className="font-body text-disco-gray">Cargando...</p>
       </div>
     );
   }
@@ -54,21 +54,21 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-wedding-beige/40 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-disco-beige/40 p-4">
       <motion.div
-        className="w-full max-w-sm bg-wedding-cream rounded-2xl shadow-lg p-8"
+        className="w-full max-w-sm bg-disco-cream rounded-2xl shadow-lg p-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <h1 className="font-display text-2xl text-wedding-deep text-center mb-6">
+        <h1 className="font-display text-2xl text-disco-deep text-center mb-6">
           Admin – Boda
         </h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label
               htmlFor="email"
-              className="block font-body text-sm font-medium text-wedding-deep mb-1"
+              className="block font-body text-sm font-medium text-disco-deep mb-1"
             >
               Email
             </label>
@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
               id="email"
               type="email"
               {...register("email")}
-              className="w-full rounded-xl border border-wedding-gray/30 bg-white px-4 py-2 font-body text-wedding-deep"
+              className="w-full rounded-xl border border-disco-gray/30 bg-white px-4 py-2 font-body text-disco-deep"
               autoComplete="email"
             />
             {errors.email && (
@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
           <div>
             <label
               htmlFor="password"
-              className="block font-body text-sm font-medium text-wedding-deep mb-1"
+              className="block font-body text-sm font-medium text-disco-deep mb-1"
             >
               Contraseña
             </label>
@@ -94,7 +94,7 @@ export default function AdminLoginPage() {
               id="password"
               type="password"
               {...register("password")}
-              className="w-full rounded-xl border border-wedding-gray/30 bg-white px-4 py-2 font-body text-wedding-deep"
+              className="w-full rounded-xl border border-disco-gray/30 bg-white px-4 py-2 font-body text-disco-deep"
               autoComplete="current-password"
             />
             {errors.password && (
@@ -108,7 +108,7 @@ export default function AdminLoginPage() {
           )}
           <button
             type="submit"
-            className="w-full rounded-xl bg-wedding-deep text-wedding-cream font-body font-medium py-3 hover:bg-wedding-soft transition-colors"
+            className="w-full rounded-xl bg-disco-deep text-disco-cream font-body font-medium py-3 hover:bg-disco-soft transition-colors"
           >
             Entrar
           </button>

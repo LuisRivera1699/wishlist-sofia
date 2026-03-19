@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #FAF9F6;
-  --foreground: #1F3C88;
+  --background: #0a0a0a;
+  --foreground: #D4AF37;
 }
 
 /* Fallbacks para que siempre se vea contenido en móvil (p. ej. Android Chrome) */
@@ -21,9 +21,9 @@ html {
 }
 
 body {
-  color: #1F3C88;
+  color: #D4AF37;
   color: var(--foreground);
-  background: #FAF9F6;
+  background: #0a0a0a;
   background: var(--background);
   min-height: 100%;
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;

@@ -26,21 +26,21 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Sofía & Luis - Regalos",
+  title: "Mis 27 | Sofía - Wishlist",
   description:
-    "Queremos que seas parte de nuestros sueños. Aporta a lo que más anhelamos para nuestra vida juntos: cada detalle cuenta y tu regalo nos acerca un poco más. 💙",
+    "Lista de deseos para el cumpleaños de Sofía. Aporta a lo que más desea y ayúdala a cumplir sus sueños 💙",
   openGraph: {
-    title: "Sofía & Luis - Regalos",
+    title: "Mis 27 | Sofía - Wishlist",
     description:
-      "Queremos que seas parte de nuestros sueños. Aporta a lo que más anhelamos para nuestra vida juntos. 💙",
+      "Lista de deseos para el cumpleaños de Sofía. Aporta a lo que más desea y ayúdala a cumplir sus sueños 💙",
     url: siteUrl,
-    siteName: "Sofía & Luis - Regalos",
+    siteName: "Mis 27 | Sofía - Wishlist",
     images: [
       {
         url: "https://firebasestorage.googleapis.com/v0/b/atmo-67f01.firebasestorage.app/o/FOT_8015.jpg?alt=media&token=82d71176-edf6-4974-8def-f957ad455991",
         width: 1200,
         height: 630,
-        alt: "Sofía & Luis - Nuestra boda",
+        alt: "Cumpleaños de Sofía",
       },
     ],
     locale: "es",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sofía & Luis - Regalos",
+    title: "Mis 27 | Sofía - Wishlist",
     description:
-      "Queremos que seas parte de nuestros sueños. Aporta a lo que más anhelamos para nuestra vida juntos. 💙",
+      "Lista de deseos para el cumpleaños de Sofía. Aporta a lo que más desea y ayúdala a cumplir sus sueños 💙",
     images: [
       "https://firebasestorage.googleapis.com/v0/b/atmo-67f01.firebasestorage.app/o/FOT_8015.jpg?alt=media&token=82d71176-edf6-4974-8def-f957ad455991",
     ],
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${inter.variable} font-body antialiased bg-wedding-cream text-wedding-deep`}
+        className={`${playfair.variable} ${inter.variable} font-body antialiased bg-disco-black text-disco-goldLight`}
       >
         {children}
       </body>

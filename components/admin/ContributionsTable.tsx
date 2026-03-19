@@ -58,61 +58,61 @@ export function ContributionsTable() {
   }
 
   if (loading) {
-    return <p className="font-body text-wedding-gray">Cargando aportes...</p>;
+    return <p className="font-body text-disco-gray">Cargando aportes...</p>;
   }
 
   if (contributions.length === 0) {
     return (
-      <p className="font-body text-wedding-gray">No hay aportes registrados.</p>
+      <p className="font-body text-disco-gray">No hay aportes registrados.</p>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-wedding-gray/20">
+    <div className="overflow-x-auto rounded-xl border border-disco-gray/20">
       <table className="w-full font-body text-sm">
-        <thead className="bg-wedding-beige/50">
+        <thead className="bg-disco-beige/50">
           <tr>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Nombre
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Regalo
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Monto
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Método
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Comprobante
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Fecha
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Estado
             </th>
-            <th className="text-left p-3 text-wedding-deep font-medium">
+            <th className="text-left p-3 text-disco-deep font-medium">
               Acciones
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-wedding-gray/10">
+        <tbody className="divide-y divide-disco-gray/10">
           {contributions.map((c: Contribution) => (
-            <tr key={c.id} className="bg-wedding-cream hover:bg-wedding-beige/30">
-              <td className="p-3 text-wedding-deep">{c.name}</td>
-              <td className="p-3 text-wedding-gray">{getGiftName(c.giftId)}</td>
-              <td className="p-3 text-wedding-deep">
+            <tr key={c.id} className="bg-disco-cream hover:bg-disco-beige/30">
+              <td className="p-3 text-neutral-800 font-medium">{c.name}</td>
+              <td className="p-3 text-neutral-700">{getGiftName(c.giftId)}</td>
+              <td className="p-3 text-neutral-800 font-medium">
                 S/ {c.amount.toLocaleString("es-PE")}
               </td>
-              <td className="p-3 text-wedding-gray">{c.paymentMethod}</td>
+              <td className="p-3 text-neutral-700">{c.paymentMethod}</td>
               <td className="p-3">
                 <a
                   href={c.proofImageUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-wedding-soft hover:underline"
+                  className="text-neutral-800 font-medium hover:underline hover:text-neutral-600"
                 >
                   Ver
                 </a>
@@ -127,7 +127,7 @@ export function ContributionsTable() {
                   />
                 </span>
               </td>
-              <td className="p-3 text-wedding-gray">
+              <td className="p-3 text-neutral-700">
                 {c.createdAt?.toDate?.()
                   ? new Date(c.createdAt.toDate()).toLocaleDateString("es-PE")
                   : "—"}
@@ -142,7 +142,7 @@ export function ContributionsTable() {
                       type="button"
                       onClick={() => updateStatus(c.id, "approved")}
                       disabled={updatingId === c.id}
-                      className="text-green-600 hover:underline text-xs disabled:opacity-50"
+                      className="text-green-700 font-medium hover:underline text-xs disabled:opacity-50"
                     >
                       Aprobar
                     </button>
@@ -152,7 +152,7 @@ export function ContributionsTable() {
                       type="button"
                       onClick={() => updateStatus(c.id, "rejected")}
                       disabled={updatingId === c.id}
-                      className="text-amber-600 hover:underline text-xs disabled:opacity-50"
+                      className="text-amber-700 font-medium hover:underline text-xs disabled:opacity-50"
                     >
                       Rechazar
                     </button>
@@ -161,7 +161,7 @@ export function ContributionsTable() {
                     type="button"
                     onClick={() => remove(c.id)}
                     disabled={updatingId === c.id}
-                    className="text-red-600 hover:underline text-xs disabled:opacity-50"
+                    className="text-red-700 font-medium hover:underline text-xs disabled:opacity-50"
                   >
                     Eliminar
                   </button>

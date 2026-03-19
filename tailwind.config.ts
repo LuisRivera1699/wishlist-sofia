@@ -11,13 +11,18 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        wedding: {
-          deep: "#1F3C88",
-          deep2: "#0d1b3a",
-          soft: "#5DA9E9",
-          beige: "#F5E6D3",
-          cream: "#FAF9F6",
-          gray: "#6B7280",
+        disco: {
+          black: "#0a0a0a",
+          blackSoft: "#1a1a1a",
+          gold: "#D4AF37",
+          goldLight: "#F4E4BA",
+          silver: "#C0C0C0",
+          silverDark: "#A8A8A8",
+          cream: "#F4E4BA",
+          deep: "#D4AF37",
+          beige: "#1a1a1a",
+          soft: "#D4AF37",
+          gray: "#C0C0C0",
         },
       },
       fontFamily: {

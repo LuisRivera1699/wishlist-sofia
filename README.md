@@ -1,6 +1,6 @@
-# Sofía & Luis – Web de Boda
+# Sofía – Lista de Deseos
 
-Web de boda con lista de regalos por aportes, subida de comprobantes y panel de administración. Estética Pinterest Wedding, construida con Next.js 14 y Firebase.
+Lista de deseos de cumpleaños con aportes, subida de comprobantes y panel de administración. Construida con Next.js 14 y Firebase.
 
 ## Stack
 
@@ -43,11 +43,14 @@ Edita `.env.local`:
 3. Crea un usuario con el mismo email que `NEXT_PUBLIC_ADMIN_EMAIL` (para el panel admin).
 4. Activa **Firestore** y **Storage**.
 5. En Firestore, crea las colecciones (opcional; se crean al escribir):
-   - `wedding_gifts`
-   - `wedding_contributions`
-6. En Firestore → Índices: crea un índice compuesto para listar aportes por fecha:
-   - Colección: `wedding_contributions`
-   - Campos: `createdAt` (Descendente)
+   - `wishlist_gifts`
+   - `wishlist_contributions`
+   - `wishlist_purchases`
+6. En Firestore → Índices: crea índices compuestos:
+   - Colección: `wishlist_contributions`
+     - Campos: `createdAt` (Descendente)
+   - Colección: `wishlist_purchases`
+     - Campos: `createdAt` (Descendente)
 
 ### 4. Reglas de seguridad
 
@@ -63,17 +66,24 @@ service cloud.firestore {
         request.auth.token.email == "admin@example.com";
     }
 
-    // wedding_gifts: lectura pública; escritura solo admin
-    match /wedding_gifts/{giftId} {
+    // wishlist_gifts: lectura pública; escritura solo admin
+    match /wishlist_gifts/{giftId} {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    // wedding_contributions: creación pública; lectura de aprobados para progreso; update/delete solo admin
-    match /wedding_contributions/{contributionId} {
+    // wishlist_contributions: creación pública; lectura de aprobados para progreso; update/delete solo admin
+    match /wishlist_contributions/{contributionId} {
       allow create: if true;
       allow read: if resource.data.status == "approved" || isAdmin();
       allow update, delete: if isAdmin();
+    }
+
+    // wishlist_purchases: creación y lectura públicas; delete solo admin; update no permitido
+    match /wishlist_purchases/{purchaseId} {
+      allow create, read: if true;
+      allow update: if false;
+      allow delete: if isAdmin();
     }
   }
 }
@@ -93,14 +103,14 @@ service firebase.storage {
     }
 
     // Comprobantes de pago: cualquiera puede subir; solo admin puede borrar
-    match /wedding_proofs/{allPaths=**} {
+    match /wishlist_proofs/{allPaths=**} {
       allow read: if true;
       allow write: if true;
       allow delete: if isAdmin();
     }
 
     // Imágenes de regalos: solo admin
-    match /wedding_gifts/{allPaths=**} {
+    match /wishlist_gifts/{allPaths=**} {
       allow read: if true;
       allow write, delete: if isAdmin();
     }

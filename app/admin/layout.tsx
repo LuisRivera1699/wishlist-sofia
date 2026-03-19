@@ -31,8 +31,8 @@ export default function AdminLayout({
 
   if (loading && !isLoginPage) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-wedding-cream">
-        <p className="font-body text-wedding-gray">Cargando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-disco-black">
+        <p className="font-body text-disco-silver">Cargando...</p>
       </div>
     );
   }

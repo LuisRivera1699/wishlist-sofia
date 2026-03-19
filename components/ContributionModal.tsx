@@ -45,7 +45,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
       const file = data.proof[0];
       const timestamp = Date.now();
       const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
-      const path = `wedding_proofs/${timestamp}_${safeName}`;
+      const path = `wishlist_proofs/${timestamp}_${safeName}`;
       const storageRef = ref(storage, path);
       await uploadBytes(storageRef, file);
       const proofImageUrl = await getDownloadURL(storageRef);
@@ -81,9 +81,9 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
-        <div className="absolute inset-0 bg-wedding-deep/50" aria-hidden />
+        <div className="absolute inset-0 bg-disco-black/80" aria-hidden />
         <motion.div
-          className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-wedding-cream rounded-2xl shadow-xl"
+          className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-disco-blackSoft rounded-2xl shadow-xl border border-disco-gold/40"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
@@ -92,13 +92,13 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
         >
           <div className="p-6 sm:p-8">
             <div className="flex justify-between items-start mb-6">
-              <h3 className="font-display text-xl text-wedding-deep">
+              <h3 className="font-display text-xl text-disco-goldLight">
                 Aportar a: {gift.name}
               </h3>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-wedding-gray hover:text-wedding-deep transition-colors"
+                className="text-disco-silver hover:text-disco-goldLight transition-colors"
                 aria-label="Cerrar"
               >
                 <span className="text-2xl leading-none">&times;</span>
@@ -107,26 +107,26 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
 
             {success ? (
               <div className="text-center py-8">
-                <p className="font-body text-wedding-deep text-lg">
+                <p className="font-body text-disco-goldLight text-lg">
                   Gracias por tu aporte 💙
                 </p>
-                <p className="font-body text-wedding-gray mt-2">
+                <p className="font-body text-disco-silver mt-2">
                   Validaremos tu comprobante pronto.
                 </p>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="mt-6 rounded-xl bg-wedding-deep text-wedding-cream font-body font-medium px-6 py-2 hover:bg-wedding-soft transition-colors"
+                  className="mt-6 rounded-xl bg-disco-gold text-disco-black font-body font-medium px-6 py-2 hover:bg-disco-goldLight transition-colors"
                 >
                   Cerrar
                 </button>
               </div>
             ) : (
               <>
-                <p className="font-body text-wedding-gray mb-4">
+                <p className="font-body text-disco-silver mb-4">
                   Puedes realizar tu aporte mediante:
                 </p>
-                <ul className="bg-wedding-beige/50 rounded-xl p-4 mb-6 space-y-3 font-body text-wedding-deep text-sm">
+                <ul className="bg-disco-black rounded-xl p-4 mb-6 space-y-3 font-body text-disco-goldLight text-sm border border-disco-gold/20">
                   <li>
                     <strong>Yape/Plin Sofía:</strong> 955170938
                   </li>
@@ -153,7 +153,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block font-body text-sm font-medium text-wedding-deep mb-1"
+                      className="block font-body text-sm font-medium text-disco-goldLight mb-1"
                     >
                       Nombre
                     </label>
@@ -161,7 +161,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                       id="name"
                       type="text"
                       {...register("name")}
-                      className="w-full rounded-xl border border-wedding-gray/30 bg-white px-4 py-2 font-body text-wedding-deep focus:border-wedding-soft focus:outline-none focus:ring-1 focus:ring-wedding-soft"
+                      className="w-full rounded-xl border border-disco-silver/30 bg-disco-blackSoft border-disco-silver/20 px-4 py-2 font-body text-disco-goldLight placeholder:text-disco-silver/60 focus:border-disco-gold focus:outline-none focus:ring-1 focus:ring-disco-gold"
                       placeholder="Tu nombre"
                     />
                     {errors.name && (
@@ -174,7 +174,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                   <div>
                     <label
                       htmlFor="amount"
-                      className="block font-body text-sm font-medium text-wedding-deep mb-1"
+                      className="block font-body text-sm font-medium text-disco-goldLight mb-1"
                     >
                       Monto depositado (S/)
                     </label>
@@ -184,7 +184,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                       step="0.01"
                       min="0"
                       {...register("amount", { valueAsNumber: true })}
-                      className="w-full rounded-xl border border-wedding-gray/30 bg-white px-4 py-2 font-body text-wedding-deep focus:border-wedding-soft focus:outline-none focus:ring-1 focus:ring-wedding-soft"
+                      className="w-full rounded-xl border border-disco-silver/30 bg-disco-blackSoft border-disco-silver/20 px-4 py-2 font-body text-disco-goldLight placeholder:text-disco-silver/60 focus:border-disco-gold focus:outline-none focus:ring-1 focus:ring-disco-gold"
                       placeholder="0.00"
                     />
                     {errors.amount && (
@@ -197,14 +197,14 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                   <div>
                     <label
                       htmlFor="paymentMethod"
-                      className="block font-body text-sm font-medium text-wedding-deep mb-1"
+                      className="block font-body text-sm font-medium text-disco-goldLight mb-1"
                     >
                       Método usado
                     </label>
                     <select
                       id="paymentMethod"
                       {...register("paymentMethod")}
-                      className="w-full rounded-xl border border-wedding-gray/30 bg-white px-4 py-2 font-body text-wedding-deep focus:border-wedding-soft focus:outline-none focus:ring-1 focus:ring-wedding-soft"
+                      className="w-full rounded-xl border border-disco-silver/30 bg-disco-blackSoft border-disco-silver/20 px-4 py-2 font-body text-disco-goldLight placeholder:text-disco-silver/60 focus:border-disco-gold focus:outline-none focus:ring-1 focus:ring-disco-gold"
                     >
                       <option value="">Elige una opción</option>
                       <option value="Yape Sofía">Yape Sofía</option>
@@ -224,7 +224,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                   <div>
                     <label
                       htmlFor="proof"
-                      className="block font-body text-sm font-medium text-wedding-deep mb-1"
+                      className="block font-body text-sm font-medium text-disco-goldLight mb-1"
                     >
                       Comprobante de pago
                     </label>
@@ -233,7 +233,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                       type="file"
                       accept="image/*"
                       {...register("proof")}
-                      className="w-full rounded-xl border border-wedding-gray/30 bg-white px-4 py-2 font-body text-wedding-deep text-sm file:mr-2 file:rounded-lg file:border-0 file:bg-wedding-soft file:px-3 file:py-1 file:text-wedding-deep"
+                      className="w-full rounded-xl border border-disco-silver/30 bg-disco-blackSoft border-disco-silver/20 px-4 py-2 font-body text-disco-goldLight placeholder:text-disco-silver/60 text-sm file:mr-2 file:rounded-lg file:border-0 file:bg-disco-gold file:px-3 file:py-1 file:text-disco-goldLight"
                     />
                     {errors.proof && (
                       <p className="mt-1 text-sm text-red-600">
@@ -250,14 +250,14 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                     <button
                       type="button"
                       onClick={onClose}
-                      className="flex-1 rounded-xl border border-wedding-gray/40 text-wedding-deep font-body font-medium py-3 hover:bg-wedding-beige/50 transition-colors"
+                      className="flex-1 rounded-xl border border-disco-silver/40 text-disco-goldLight font-body font-medium py-3 hover:bg-disco-blackSoft transition-colors"
                     >
                       Cancelar
                     </button>
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="flex-1 rounded-xl bg-wedding-deep text-wedding-cream font-body font-medium py-3 hover:bg-wedding-soft transition-colors disabled:opacity-60"
+                      className="flex-1 rounded-xl bg-disco-gold text-disco-black font-body font-medium py-3 hover:bg-disco-goldLight transition-colors disabled:opacity-60"
                     >
                       {submitting ? "Enviando..." : "Enviar aporte"}
                     </button>

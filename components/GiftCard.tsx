@@ -7,19 +7,30 @@ import {
   totalApprovedByGiftId,
   countApprovedByGiftId,
 } from "@/hooks/useContributions";
+import { hasPurchaseForGift } from "@/hooks/usePurchases";
 import type { Gift } from "@/lib/types";
-import type { Contribution } from "@/lib/types";
+import type { Contribution, Purchase } from "@/lib/types";
 
 interface GiftCardProps {
   gift: Gift;
   contributions: Contribution[];
-  onAportar: (gift: Gift) => void;
+  purchases: Purchase[];
+  onAportar?: (gift: Gift) => void;
+  onCompre?: (gift: Gift) => void;
 }
 
 const PLACEHOLDER_IMAGE =
   "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80";
 
-export function GiftCard({ gift, contributions, onAportar }: GiftCardProps) {
+export function GiftCard({
+  gift,
+  contributions,
+  purchases,
+  onAportar,
+  onCompre,
+}: GiftCardProps) {
+  const isPurchaseType = gift.type === "purchase";
+  const hasPurchase = hasPurchaseForGift(purchases, gift.id);
   const totalRaised = totalApprovedByGiftId(contributions, gift.id);
   const contributorCount = countApprovedByGiftId(contributions, gift.id);
   const percentage =
@@ -28,12 +39,12 @@ export function GiftCard({ gift, contributions, onAportar }: GiftCardProps) {
 
   return (
     <motion.article
-      className="bg-wedding-cream rounded-2xl shadow-md overflow-hidden flex flex-col h-full"
+      className="bg-disco-blackSoft rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border border-disco-gold/30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="relative aspect-[4/3] bg-wedding-beige">
+      <div className="relative aspect-[4/3] bg-disco-black">
         <Image
           src={gift.imageUrl || PLACEHOLDER_IMAGE}
           alt={gift.name}
@@ -43,34 +54,74 @@ export function GiftCard({ gift, contributions, onAportar }: GiftCardProps) {
         />
       </div>
       <div className="p-5 sm:p-6 flex flex-col flex-1">
-        <h3 className="font-display text-xl text-wedding-deep mb-2">
+        <h3 className="font-display text-xl text-disco-goldLight mb-2">
           {gift.name}
         </h3>
-        <p className="font-body text-wedding-gray text-sm mb-4 flex-1">
+        <p className="font-body text-disco-silver text-sm mb-4 flex-1">
           {gift.description}
         </p>
-        <p className="font-body text-wedding-gray text-sm mb-2">
-          {contributorCount === 1
-            ? "1 persona ha aportado"
-            : `${contributorCount} personas han aportado`}
-        </p>
-        <ProgressBar
-          totalCost={gift.totalCost}
-          totalRaised={totalRaised}
-          className="mb-4"
-        />
-        {isComplete ? (
-          <p className="font-body text-wedding-deep font-medium text-center py-2">
-            Completado 💙
-          </p>
+
+        {isPurchaseType ? (
+          <>
+            {hasPurchase ? (
+              <>
+                <p className="font-body text-disco-gold font-medium text-center py-2 mb-2">
+                  Comprado ✨
+                </p>
+                <p className="font-body text-disco-silver text-sm text-center">
+                  Este regalo ya fue comprado por uno de los amigos.
+                </p>
+              </>
+            ) : (
+              <div className="space-y-2 mt-auto">
+                {gift.purchaseLink && (
+                  <a
+                    href={gift.purchaseLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full rounded-xl border border-disco-gold text-disco-gold font-body font-medium py-3 text-center hover:bg-disco-gold/10 transition-colors duration-300"
+                  >
+                    Ver en tienda
+                  </a>
+                )}
+                {onCompre && (
+                  <button
+                    type="button"
+                    onClick={() => onCompre(gift)}
+                    className="w-full rounded-xl bg-disco-gold text-disco-black font-body font-medium py-3 hover:bg-disco-goldLight transition-colors duration-300"
+                  >
+                    Lo compré!
+                  </button>
+                )}
+              </div>
+            )}
+          </>
         ) : (
-          <button
-            type="button"
-            onClick={() => onAportar(gift)}
-            className="w-full rounded-xl bg-wedding-deep text-wedding-cream font-body font-medium py-3 hover:bg-wedding-soft transition-colors duration-300"
-          >
-            Aportar
-          </button>
+          <>
+            <p className="font-body text-disco-silver text-sm mb-2">
+              {contributorCount === 1
+                ? "1 persona ha aportado"
+                : `${contributorCount} personas han aportado`}
+            </p>
+            <ProgressBar
+              totalCost={gift.totalCost}
+              totalRaised={totalRaised}
+              className="mb-4"
+            />
+            {isComplete ? (
+              <p className="font-body text-disco-gold font-medium text-center py-2">
+                Completado ✨
+              </p>
+            ) : onAportar ? (
+              <button
+                type="button"
+                onClick={() => onAportar(gift)}
+                className="w-full rounded-xl bg-disco-gold text-disco-black font-body font-medium py-3 hover:bg-disco-goldLight transition-colors duration-300"
+              >
+                Aportar
+              </button>
+            ) : null}
+          </>
         )}
       </div>
     </motion.article>

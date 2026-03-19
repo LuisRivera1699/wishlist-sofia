@@ -17,16 +17,16 @@ export function ProgressBar({
 
   return (
     <div className={className}>
-      <div className="flex justify-between text-sm font-body text-wedding-gray mb-1">
+      <div className="flex justify-between text-sm font-body text-disco-silver mb-1">
         <span>
           S/ {totalRaised.toLocaleString("es-PE")} de S/{" "}
           {totalCost.toLocaleString("es-PE")}
         </span>
         <span>{percentage.toFixed(0)}%</span>
       </div>
-      <div className="h-2 bg-wedding-beige rounded-full overflow-hidden">
+      <div className="h-2 bg-disco-silverDark rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-wedding-soft rounded-full"
+          className="h-full bg-gradient-to-r from-disco-gold to-disco-goldLight rounded-full"
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 0.8, ease: "easeOut" }}
