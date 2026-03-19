@@ -28,16 +28,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Mis 27 | Sofía - Wishlist",
   description:
-    "Lista de deseos para el cumpleaños de Sofía. Aporta a lo que más desea y ayúdala a cumplir sus sueños 💙",
+    "Hola! Esta es mi lista de deseos para mi cumpleaños. Si quieres regalarme algo, puedes hacer tu aporte aquí ✨",
   openGraph: {
     title: "Mis 27 | Sofía - Wishlist",
     description:
-      "Lista de deseos para el cumpleaños de Sofía. Aporta a lo que más desea y ayúdala a cumplir sus sueños 💙",
+      "Hola! Esta es mi lista de deseos para mi cumpleaños. Si quieres regalarme algo, puedes hacer tu aporte aquí ✨",
     url: siteUrl,
     siteName: "Mis 27 | Sofía - Wishlist",
     images: [
       {
-        url: "https://firebasestorage.googleapis.com/v0/b/atmo-67f01.firebasestorage.app/o/FOT_8015.jpg?alt=media&token=82d71176-edf6-4974-8def-f957ad455991",
+        url: "https://firebasestorage.googleapis.com/v0/b/atmo-67f01.firebasestorage.app/o/Screenshot%202026-03-18%20at%2011.05.11%E2%80%AFPM.png?alt=media&token=65c837b6-c170-4af3-b32d-5ec0f854de3f",
         width: 1200,
         height: 630,
         alt: "Cumpleaños de Sofía",
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mis 27 | Sofía - Wishlist",
     description:
-      "Lista de deseos para el cumpleaños de Sofía. Aporta a lo que más desea y ayúdala a cumplir sus sueños 💙",
+      "Hola! Esta es mi lista de deseos para mi cumpleaños. Si quieres regalarme algo, puedes hacer tu aporte aquí ✨",
     images: [
-      "https://firebasestorage.googleapis.com/v0/b/atmo-67f01.firebasestorage.app/o/FOT_8015.jpg?alt=media&token=82d71176-edf6-4974-8def-f957ad455991",
+      "https://firebasestorage.googleapis.com/v0/b/atmo-67f01.firebasestorage.app/o/Screenshot%202026-03-18%20at%2011.05.11%E2%80%AFPM.png?alt=media&token=65c837b6-c170-4af3-b32d-5ec0f854de3f",
     ],
   },
 };
