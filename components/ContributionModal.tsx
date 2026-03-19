@@ -35,6 +35,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
       amount: undefined,
       paymentMethod: undefined,
       proof: undefined,
+      message: "",
     },
   });
 
@@ -57,6 +58,7 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
         proofImageUrl,
         status: "pending",
         giftId: gift.id,
+        message: (data.message ?? "").trim() || undefined,
         createdAt: serverTimestamp(),
       });
 
@@ -240,6 +242,22 @@ export function ContributionModal({ gift, onClose }: ContributionModalProps) {
                         {errors.proof.message}
                       </p>
                     )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block font-body text-sm font-medium text-disco-goldLight mb-1"
+                    >
+                      Nota o mensaje (opcional)
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={2}
+                      {...register("message")}
+                      className="w-full rounded-xl border border-disco-silver/30 bg-disco-black px-4 py-2 font-body text-disco-goldLight placeholder:text-disco-silver/60 focus:border-disco-gold focus:outline-none focus:ring-1 focus:ring-disco-gold resize-none"
+                      placeholder="Un mensaje para acompañar tu aporte..."
+                    />
                   </div>
 
                   {submitError && (

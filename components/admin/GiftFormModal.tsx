@@ -20,7 +20,7 @@ const giftSchema = z
   .object({
     name: z.string().min(1, "Nombre requerido"),
     description: z.string().min(1, "Descripción requerida"),
-    type: z.enum(["contribution", "purchase"]),
+    type: z.enum(["contribution", "purchase", "multiple"]),
     totalCost: z.number().min(0),
     purchaseLink: z.string().url().optional().or(z.literal("")),
     image: z
@@ -164,6 +164,7 @@ export function GiftFormModal({
             >
               <option value="contribution">Aporte (varios aportan)</option>
               <option value="purchase">Compra directa (un amigo compra)</option>
+              <option value="multiple">Compra múltiple (varios pueden comprar uno)</option>
             </select>
           </div>
           {giftType === "purchase" && (

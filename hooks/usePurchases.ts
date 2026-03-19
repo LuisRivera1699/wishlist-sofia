@@ -57,3 +57,10 @@ export function hasPurchaseForGift(
 ): boolean {
   return purchases.some((p) => p.giftId === giftId);
 }
+
+export function countPurchasesByGiftId(
+  purchases: Purchase[],
+  giftId: string
+): number {
+  return purchases.filter((p) => p.giftId === giftId).length;
+}

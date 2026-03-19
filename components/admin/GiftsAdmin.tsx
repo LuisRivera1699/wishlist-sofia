@@ -8,7 +8,11 @@ import { COLLECTIONS } from "@/lib/types";
 import { useGifts } from "@/hooks/useGifts";
 import { useAllContributions } from "@/hooks/useContributions";
 import { totalApprovedByGiftId } from "@/hooks/useContributions";
-import { useAllPurchases, hasPurchaseForGift } from "@/hooks/usePurchases";
+import {
+  useAllPurchases,
+  hasPurchaseForGift,
+  countPurchasesByGiftId,
+} from "@/hooks/usePurchases";
 import { GiftFormModal } from "./GiftFormModal";
 import type { Gift } from "@/lib/types";
 
@@ -54,7 +58,9 @@ export function GiftsAdmin() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {gifts.map((gift) => {
           const isPurchaseType = gift.type === "purchase";
+          const isMultipleType = gift.type === "multiple";
           const purchased = hasPurchaseForGift(purchases, gift.id);
+          const purchaseCount = countPurchasesByGiftId(purchases, gift.id);
           const totalRaised = totalApprovedByGiftId(contributions, gift.id);
           const percentage =
             gift.totalCost > 0
@@ -81,7 +87,15 @@ export function GiftsAdmin() {
                 <p className="font-body text-neutral-600 text-sm line-clamp-2 mt-1">
                   {gift.description}
                 </p>
-                {isPurchaseType && purchased ? (
+                {isMultipleType ? (
+                  <p className="font-body text-sm mt-2 text-neutral-700 font-medium">
+                    {purchaseCount === 0
+                      ? "0 comprados"
+                      : purchaseCount === 1
+                        ? "1 comprado"
+                        : `${purchaseCount} comprados`}
+                  </p>
+                ) : isPurchaseType && purchased ? (
                   <p className="font-body text-sm mt-2 text-green-700 font-medium">
                     Comprado
                   </p>

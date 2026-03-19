@@ -6,7 +6,7 @@ export const COLLECTIONS = {
   purchases: "wishlist_purchases",
 } as const;
 
-export type GiftType = "contribution" | "purchase";
+export type GiftType = "contribution" | "purchase" | "multiple";
 
 export type ContributionStatus = "pending" | "approved" | "rejected";
 
@@ -38,6 +38,7 @@ export interface Contribution {
   proofImageUrl: string;
   status: ContributionStatus;
   giftId: string;
+  message?: string;
   createdAt: Timestamp;
 }
 

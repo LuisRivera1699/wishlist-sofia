@@ -81,7 +81,9 @@ export function PurchaseModal({
           <div className="p-6 sm:p-8">
             <div className="flex justify-between items-start mb-6">
               <h3 className="font-display text-xl text-disco-goldLight">
-                Lo compré: {gift.name}
+                {gift.type === "multiple"
+                  ? `Compré uno: ${gift.name}`
+                  : `Lo compré: ${gift.name}`}
               </h3>
               <button
                 type="button"
@@ -99,7 +101,9 @@ export function PurchaseModal({
                   Gracias por registrarte ✨
                 </p>
                 <p className="font-body text-disco-silver mt-2">
-                  El regalo aparecerá como comprado.
+                  {gift.type === "multiple"
+                    ? "Tu compra ha sido registrada."
+                    : "El regalo aparecerá como comprado."}
                 </p>
                 <button
                   type="button"

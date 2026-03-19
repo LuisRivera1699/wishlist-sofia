@@ -20,7 +20,7 @@ export function GiftsSection() {
     useState<Gift | null>(null);
 
   function handleAportar(gift: Gift) {
-    if (gift.type === "purchase") {
+    if (gift.type === "purchase" || gift.type === "multiple") {
       setSelectedGiftForPurchase(gift);
     } else {
       setSelectedGift(gift);

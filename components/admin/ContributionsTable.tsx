@@ -88,6 +88,9 @@ export function ContributionsTable() {
               Comprobante
             </th>
             <th className="text-left p-3 text-disco-deep font-medium">
+              Nota
+            </th>
+            <th className="text-left p-3 text-disco-deep font-medium">
               Fecha
             </th>
             <th className="text-left p-3 text-disco-deep font-medium">
@@ -126,6 +129,9 @@ export function ContributionsTable() {
                     sizes="40px"
                   />
                 </span>
+              </td>
+              <td className="p-3 text-neutral-700 max-w-xs truncate">
+                {c.message ?? "—"}
               </td>
               <td className="p-3 text-neutral-700">
                 {c.createdAt?.toDate?.()

@@ -14,6 +14,7 @@ export const contributionFormSchema = z.object({
       (files) => files?.[0]?.type?.startsWith("image/"),
       "El comprobante debe ser una imagen"
     ),
+  message: z.string().optional(),
 });
 
 export type ContributionFormData = z.infer<typeof contributionFormSchema>;
